@@ -16,6 +16,7 @@ class VoteUnitTest(unittest.TestCase):
         result = self.app.get('/')
         self.assertEqual(result.status_code, 200)
 
+
     def test_version_is_set(self):
         """Assert that version is set"""
         result = self.app.get('/')
