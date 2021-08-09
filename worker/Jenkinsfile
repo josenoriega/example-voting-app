@@ -2,9 +2,6 @@ pipeline {
 
     agent none
     
-
-    }
-    
     stages {
         stage('build') {
           agent {
@@ -80,4 +77,5 @@ pipeline {
             echo 'Pipeline for worker is complete..'
         }
     }
+ 
 }
