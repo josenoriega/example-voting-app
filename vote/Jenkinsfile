@@ -13,7 +13,7 @@ pipeline {
 
             steps {
                 echo 'Compiling vote app'
-                sh 'pip install -r requirements.txt'
+                sh 'cd vote && pip install -r requirements.txt'
 
             }
         }
@@ -27,8 +27,8 @@ pipeline {
 
             steps {
                 echo 'Running unit tests on vote app'
-                 sh 'pip install -r requirements.txt'
-                 sh 'nosetests -v'
+                 sh 'cd vote && pip install -r requirements.txt'
+                 sh 'cd vote && nosetests -v'
             }
         }
 
