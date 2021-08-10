@@ -3,7 +3,6 @@ pipeline {
     agent none
 
     stages {
-        
         stage('build') {
             agent {
             docker {
@@ -11,9 +10,9 @@ pipeline {
                    args '--user root'
             }
           }
-            when {
-              changeset '**/vote/**'
-            }
+            //when {
+              // changeset '**/vote/**'
+            //}
             steps {
                 echo 'Compiling vote app'
                 sh 'pip install -r requirements.txt'
@@ -27,9 +26,9 @@ pipeline {
                        args '--user root'
                 }
             }
-            when {
-              changeset '**/vote/**'
-            }
+            // when {
+              // changeset '**/vote/**'
+            //} 
             steps {
                 echo 'Running unit tests on vote app'
                  sh 'pip install -r requirements.txt'
@@ -39,9 +38,9 @@ pipeline {
 
          stage('docker-package') {
             agent any
-            when {
-              changeset '**/vote/**'
-            }
+            // when {
+             // changeset '**/vote/**'
+            // } 
             steps {
               echo 'Packaging vote app with docker'
                 script {
