@@ -15,9 +15,7 @@ pipeline {
             }
             steps {
                 echo 'Compiling result app'
-		dir('result') {
-	           sh 'npm install'
-                }
+		        sh 'cd result && npm install'  
             }
         }
          stage('test') {
@@ -31,10 +29,8 @@ pipeline {
             }
             steps {
                 echo 'Running unit tests on result app'
-                dir('worker') {
-                  sh 'npm install'
-                  sh 'npm test'
-                }
+                  sh 'cd result && npm install'
+                  sh 'cd result && npm test'
             }
         }
 
