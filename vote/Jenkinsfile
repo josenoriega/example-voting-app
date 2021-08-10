@@ -4,38 +4,35 @@ pipeline {
 
     stages {
         agent {
-    docker {
-       image 'python:2.7.16-slim'
-           args '--user root'
-    }
-    }
+            docker {
+               image 'python:2.7.16-slim'
+                   args '--user root'
+            }
+          }
         stage('build') {
             when {
               changeset '**/vote/**'
             }
             steps {
                 echo 'Compiling vote app'
-        dir('vote') {
-               sh 'pip install -r requirements.txt'
-                }
+                sh 'pip install -r requirements.txt'
+
             }
         }
          stage('test') {
              agent {
-    docker {
-       image 'python:2.7.16-slim'
-           args '--user root'
-    }
-    }
+                docker {
+                   image 'python:2.7.16-slim'
+                       args '--user root'
+                }
+            }
             when {
               changeset '**/vote/**'
             }
             steps {
                 echo 'Running unit tests on vote app'
-                dir('worker') {
-                  sh 'pip install -r requirements.txt'
-                  sh 'nosetests -v'
-                }
+                 sh 'pip install -r requirements.txt'
+                 sh 'nosetests -v'
             }
         }
 
