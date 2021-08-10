@@ -75,12 +75,6 @@ pipeline {
               } 
             }
         }
-    
-    post {
-        always {
-            echo 'Pipeline for worker is complete..'
-        }
-    }
 
     }
 }
